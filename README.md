@@ -1,4 +1,4 @@
-# 轮子之virtual-dom
+# 轮子之MVVM
 ## 用法
 * 安装nodejs
 * 安装依赖包：npm install
