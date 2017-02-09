@@ -5,27 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <title>MVVM</title>
+
+    <style type="text/css">
+    #root{
+    	color: green;
+    }
+    </style>
 </head>
 
 <body> 
 	<div id="root">
 		<h1 g-text="title"></h1>
 
-		<div class="wrap">
-			<div g-text="author"></div>
-			<ul g-list="todos">
-				<li g-list-item="todos">
-					<p g-class="todos:status" g-text="todos:creator"></p>
-					<p g-text="todos:content"></p>
-
-					<ul g-list="todos:members">
-						<li g-list-item="todos:members">
-							<span g-text="todos:members:name"></span>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+		<input type="text" g-model="title" placeholder="输入点什么吧..."/>
 	</div>
 
 

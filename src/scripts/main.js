@@ -1,4 +1,4 @@
-import {Parser} from './core/mvvm';
+import {Parser} from './core/parser';
 
 import debug from 'debug';
 const log = debug('log:');
@@ -13,16 +13,7 @@ if (ENV !== 'production') {
 }
 
 let data = {
-	title: 'learn mvvm',
-	author: '陈果',
-	todos: [{
-		creator: "陈果",
-		content: '解析模版',
-		status: 'todo',
-		menbers: [{
-			name: 'gchen'
-		}]
-	}]
+	title: 'mvvm'
 };
 
 new Parser('#root', data);
