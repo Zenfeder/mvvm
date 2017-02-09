@@ -1,4 +1,5 @@
 import {Parser} from './core/parser';
+import {Observer} from './core/observer';
 
 import debug from 'debug';
 const log = debug('log:');
@@ -17,3 +18,11 @@ let data = {
 };
 
 new Parser('#root', data);
+
+let obs = new Observer();
+
+obs.observerNorm(data, 'title', (oldVal, newVal) => {
+	log(`${oldVal} ===> ${newVal}`);
+});
+
+data.title = 'learn mvvm'
