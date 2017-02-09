@@ -8,7 +8,26 @@
 </head>
 
 <body> 
-	<h3>MVVM</h3>
+	<div id="root">
+		<h1 g-text="title"></h1>
+
+		<div class="wrap">
+			<div g-text="author"></div>
+			<ul g-list="todos">
+				<li g-list-item="todos">
+					<p g-class="todos:status" g-text="todos:creator"></p>
+					<p g-text="todos:content"></p>
+
+					<ul g-list="todos:members">
+						<li g-list-item="todos:members">
+							<span g-text="todos:members:name"></span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 
     <!-- rollup自动打包生成的文件 -->
     <script src="js/build.min.js"></script>

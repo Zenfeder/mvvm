@@ -1,4 +1,4 @@
-import {createVdomNode, createRdomTree, updateRdom} from './core/vdom';
+import {Parser} from './core/mvvm';
 
 import debug from 'debug';
 const log = debug('log:');
@@ -12,25 +12,17 @@ if (ENV !== 'production') {
 	debug.disable();
 }
 
-const vdom_a = createVdomNode('ul', { 'className': 'list'}, 
-	createVdomNode('li', {'className': 'active', 'style': 'color: green;'}, 'Facebook'),
-	createVdomNode('li', {}, 'Uber'),
-	createVdomNode('li', {}, 'Google'),
-);
+let data = {
+	title: 'learn mvvm',
+	author: '陈果',
+	todos: [{
+		creator: "陈果",
+		content: '解析模版',
+		status: 'todo',
+		menbers: [{
+			name: 'gchen'
+		}]
+	}]
+};
 
-const vdom_b = createVdomNode('ul', { 'className': 'list'}, 
-	createVdomNode('li', {}, 'Facebook'),
-	createVdomNode('li', {'className': 'active', 'style': 'color: green;'}, 'Space X'),
-	createVdomNode('li', {}, 
-		createVdomNode('span', {}, 'Google')
-	),
-);
-
-const $root = document.getElementById('root');
-const $reload = document.getElementById('reload');
-
-updateRdom($root, vdom_a);
-
-$reload.addEventListener('click', () => {
-  updateRdom($root, vdom_b, vdom_a);
-});
+new Parser('#root', data);
