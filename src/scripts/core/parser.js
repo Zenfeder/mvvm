@@ -1,3 +1,5 @@
+import {Observer} from './observer';
+
 import debug from 'debug';
 
 const log = debug('log:');
@@ -37,6 +39,7 @@ class Parser {
 		let g_text = $node.getAttribute('g-text');
 		
 		if (g_text) {
+			log(this.data[g_text]);
 			$node.innerHTML = this.data[g_text];
 		}
 	}
@@ -47,6 +50,32 @@ class Parser {
 
 		if (g_model) {
 			$node.value = this.data[g_model];
+
+			let obs = new Observer();
+
+			obs.observerNorm(this.data, g_model, (oldVal, newVal) => {
+				log(`${oldVal} ---> ${newVal}`);
+			});
+
+			$node.addEventListener('input', () => {	
+				this.data[g_model] = $node.value;
+
+				const _self = this;
+
+				function reloadText(node) {
+					for (let i = 0; i < node.children.length; i++) {
+						let $childNode = node.children[i];	
+
+						_self.parseText($childNode);		
+
+						if ($childNode.children.length) {
+							reloadText($childNode);
+						}
+					}
+				}	
+
+				reloadText(this.$rootElem);	
+			});
 		}
 	}
 

@@ -15,9 +15,12 @@
 
 <body> 
 	<div id="root">
-		<h1 g-text="title"></h1>
+        <input type="text" g-model="title" placeholder="输入点什么吧..."/>
+        <h1 g-text="title"></h1>
+		<h2 g-text="title"></h2>
 
-		<input type="text" g-model="title" placeholder="输入点什么吧..."/>
+		<textarea type="text" g-model="content" placeholder="输入点什么吧..."></textarea>
+        <p g-text="content"></p>
 	</div>
 
 

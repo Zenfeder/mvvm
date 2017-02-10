@@ -1,5 +1,4 @@
 import {Parser} from './core/parser';
-import {Observer} from './core/observer';
 
 import debug from 'debug';
 const log = debug('log:');
@@ -14,15 +13,8 @@ if (ENV !== 'production') {
 }
 
 let data = {
-	title: 'mvvm'
+	title: 'mvvm',
+	content: 'learn more and fast...'
 };
 
 new Parser('#root', data);
-
-let obs = new Observer();
-
-obs.observerNorm(data, 'title', (oldVal, newVal) => {
-	log(`${oldVal} ===> ${newVal}`);
-});
-
-data.title = 'learn mvvm'
